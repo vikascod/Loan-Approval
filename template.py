@@ -2,9 +2,10 @@ import os
 import logging
 from pathlib import Path
 
-
+# Configure the logging system with the INFO level.
 logging.basicConfig(level=logging.INFO)
 
+# Define a list of file paths that need to be created.
 list_of_files = [
     'src/__init__.py',
     'src/components/__init__.py',
@@ -23,17 +24,21 @@ list_of_files = [
     'app.py',
 ]
 
+# Iterate through the list of file paths.
 for filepath in list_of_files:
-    filepath = Path(filepath)
-    filedir, filename = os.path.split(filepath)
+    filepath = Path(filepath)  # Convert the file path to a Path object for easier manipulation.
+    filedir, filename = os.path.split(filepath) # Split filename and filedir
 
+    # Create directories if they don't exist.
     if filedir != "":
         os.makedirs(filedir, exist_ok=True)
-        logging.info(f"Creating directory:{filedir} for the file {filename}")
+        logging.info(f"Creating directory: {filedir} for the file {filename}")
 
+    # Create an empty file if it doesn't exist or is empty.
     if (not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):
         with open(filepath, 'w') as f:
             pass
-            logging.info(f"Creating enpty file:{filepath}")
+        logging.info(f"Creating empty file: {filepath}")
     else:
         logging.info(f"{filename} already exists!")
+

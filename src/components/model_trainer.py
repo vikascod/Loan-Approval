@@ -87,8 +87,10 @@ class ModelTrainer:
 
             model_report = evaluate_models(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test,
                                            models=models, param=params)
+            print("*****************Model report ********", model_report)
 
             best_model_name = max(model_report, key=model_report.get)
+            print("*****************Best Model Name ********", best_model_name)
             best_model = models[best_model_name]
 
             if model_report[best_model_name]['accuracy'] < 0.6:

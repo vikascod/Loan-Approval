@@ -5,20 +5,12 @@ The Loan Approval Prediction project aims to predict whether a loan application 
 
 ## Table of Contents
 1. [Project Setup](#1-project-setup)
-   - [Prerequisites](#prerequisites)
-   - [Installation](#installation)
+   <!-- - [Prerequisites](#prerequisites)
+   - [Installation](#installation) -->
 2. [Data](#2-data)
-   - [Data Source](#data-source)
-   - [Data Description](#data-description)
 3. [Data Preprocessing](#3-data-preprocessing)
-   - [Data Cleaning](#data-cleaning)
-   - [Feature Engineering](#feature-engineering)
 4. [Model Training](#4-model-training)
-   - [Classification Models](#classification-models)
-   - [Hyperparameter Tuning](#hyperparameter-tuning)
 5. [Model Evaluation](#5-model-evaluation)
-   - [Metrics](#metrics)
-   - [Best Model Selection](#best-model-selection)
 
 ## 1. Project Setup
 

@@ -53,14 +53,14 @@ class ModelTrainer:
                 "AdaBoost Classifier": AdaBoostClassifier(),
             }
             params = {
-                "Decision Tree": {
-                    'criterion': ['gini', 'entropy'],
-                    'splitter': ['best', 'random'],
-                    'max_depth': [None, 5, 10, 15],
-                },
                 "Random Forest": {
                     'n_estimators': [8, 16, 32, 64, 128, 256],
                     'criterion': ['gini', 'entropy'],
+                    'max_depth': [None, 5, 10, 15],
+                },
+                "Decision Tree": {
+                    'criterion': ['gini', 'entropy'],
+                    'splitter': ['best', 'random'],
                     'max_depth': [None, 5, 10, 15],
                 },
                 "Gradient Boosting": {

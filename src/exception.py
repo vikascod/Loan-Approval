@@ -15,18 +15,17 @@ def error_message_detail(error, error_detail: sys):
     Example:
     error_message_detail(exception_object, sys.exc_info())
     """
-    # Get the exception traceback information from the provided error_detail.
-    _, _, exc_td = error_detail.exc_info()
+    # Get the exception traceback information using sys.exc_info().
+    exc_type, exc_value, exc_traceback = sys.exc_info()
 
     # Extract the filename and line number from the traceback.
-    filename = exc_td.tb_frame.f_code.co_filename
-    line_number = exc_td.tb_lineno
+    filename = exc_traceback.tb_frame.f_code.co_filename
+    line_number = exc_traceback.tb_lineno
 
     # Create a formatted error message that includes the filename, line number, and the error message itself.
     error_message = f"Error occurred in Python script [{filename}] at line number [{line_number}]: {str(error)}"
 
     return error_message
-
 
 
 class CustomException(Exception):

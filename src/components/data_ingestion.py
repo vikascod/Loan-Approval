@@ -48,7 +48,7 @@ class DataIngestion:
         logging.info("Entered the data ingestion method or component")
         try:
             # Read the dataset from a CSV file into a Pandas DataFrame.
-            df = pd.read_csv(os.path.join("data/loan_approval.csv"))
+            df = pd.read_csv(os.path.join("data/loan_dataset.csv"))
             logging.info("Read the dataset as a DataFrame")
 
             # Create directories for data storage if they don't exist.

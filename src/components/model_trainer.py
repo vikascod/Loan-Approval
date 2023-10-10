@@ -86,7 +86,7 @@ class ModelTrainer:
             }
 
             model_report = evaluate_models(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test,
-                                           models=models, param=params)
+                                           models=models, params=params)
             print("*****************Model report ********", model_report)
 
             best_model_name = max(model_report, key=model_report.get)
@@ -108,7 +108,7 @@ class ModelTrainer:
             accuracy = accuracy_score(y_test, predicted)
             classification_report_str = classification_report(y_test, predicted)
 
-            return accuracy, classification_report_str
+            return [accuracy, classification_report_str]
 
         except Exception as e:
             raise CustomException(e, sys)

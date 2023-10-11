@@ -9,7 +9,6 @@ from sklearn.ensemble import (
 )
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from xgboost import XGBClassifier
 from catboost import CatBoostClassifier
@@ -87,14 +86,21 @@ class ModelTrainer:
 
             model_report = evaluate_models(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test,
                                            models=models, params=params)
-            print("*****************Model report ********", model_report)
 
-            best_model_name = max(model_report, key=model_report.get)
-            print("*****************Best Model Name ********", best_model_name)
-            best_model = models[best_model_name]
+            logging.info("Model evaluation complete")
 
-            if model_report[best_model_name]['accuracy'] < 0.6:
+            best_accuracy = 0
+            best_model_name = None
+            for model_name, metrics in model_report.items():
+                accuracy = metrics['accuracy']
+                if accuracy > best_accuracy:
+                    best_accuracy = accuracy
+                    best_model_name = model_name
+
+            if best_accuracy < 0.6:
                 raise CustomException("No best model found")
+
+            best_model = models[best_model_name]
 
             logging.info(f"Best found model on both training and testing dataset: {best_model_name}")
 
